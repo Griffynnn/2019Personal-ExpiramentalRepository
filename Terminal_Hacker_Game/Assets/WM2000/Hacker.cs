@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Hacker : MonoBehaviour {
+    //member variables, available everywhere. put them up here at the top, we call this the game state
+    int level;
 
 	// Use this for initialization
 	void Start ()
@@ -19,13 +22,24 @@ public class Hacker : MonoBehaviour {
         Terminal.WriteLine("Enter your Selection Below:");
     }
     //Learned about how variables work today. Variables are like boxes, containing things like amount of lives, speed amounts, many things
-    //a String is a string of characters. like "hello" string of letters
+    //a member variable is available for all functions, but inside it is only available for that set function ex: inside OnUserInput, only available there. if its outside, its available for any function. 
+
     void OnUserInput(string input)
     {
         //Terminal.WriteLine("User has typed..." + input);
         if (input == "Menu")
         {
             ShowMainMenu();
+        }
+        else if (input == "1")
+        {
+            level = 1;
+            StartGame();
+        }
+        else if (input == "2")
+        {
+            level = 2;
+            StartGame();
         }
         else if (input == "UwU")
         {
@@ -35,6 +49,11 @@ public class Hacker : MonoBehaviour {
         {
             Terminal.WriteLine("Please select a valid level entry, type 'Menu' to return to main menu.");
         }
+    }
+
+    void StartGame()
+    {
+        Terminal.WriteLine("You have chosen level" + level);
     }
     //Functions vs messages, using input as what the "player" types, making it print out on the console and the terminal.
     //messages get called from the outside, like an island, the message comes in. the "input" then is called to wherever. (console, terminal)
