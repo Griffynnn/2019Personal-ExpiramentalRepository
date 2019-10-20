@@ -6,6 +6,10 @@ using UnityEngine;
 public class Hacker : MonoBehaviour {
     //member variables, available everywhere. put them up here at the top, we call this the game state
     int level;
+    enum Screen { MainMenu, GuessPassword, WinScreen};
+    Screen currentScreen = Screen.MainMenu;
+    
+
 
 	// Use this for initialization
 	void Start ()
@@ -43,7 +47,7 @@ public class Hacker : MonoBehaviour {
         }
         else if (input == "UwU")
         {
-            Terminal.WriteLine("OwO Whats this? wrong wevel sewection! pwease imput a vawid wevel pweeeeeze... UwU");
+            Terminal.WriteLine("OwO Whats this? wrong wevel sewection! pwease imput a vawid wevel pweeeeeze...uwu");
         }
         else
         {
@@ -53,7 +57,9 @@ public class Hacker : MonoBehaviour {
 
     void StartGame()
     {
+        currentScreen = Screen.GuessPassword;
         Terminal.WriteLine("You have chosen level" + level);
+        Terminal.WriteLine("Please enter your password");
     }
     //Functions vs messages, using input as what the "player" types, making it print out on the console and the terminal.
     //messages get called from the outside, like an island, the message comes in. the "input" then is called to wherever. (console, terminal)
