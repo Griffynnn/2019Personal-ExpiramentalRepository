@@ -27,15 +27,23 @@ public class Hacker : MonoBehaviour {
     }
     //Learned about how variables work today. Variables are like boxes, containing things like amount of lives, speed amounts, many things
     //a member variable is available for all functions, but inside it is only available for that set function ex: inside OnUserInput, only available there. if its outside, its available for any function. 
-
+    //every function should only handle ONE thing. OnUserInput decides how to handle an input, but not actually do it. 
     void OnUserInput(string input)
     {
-        //Terminal.WriteLine("User has typed..." + input);
         if (input == "Menu")
         {
             ShowMainMenu();
         }
-        else if (input == "1")
+        else if (currentScreen == Screen.MainMenu)
+        {
+            RunMainMenu(input);
+        }
+
+    }
+
+    void RunMainMenu(string input)
+    {
+        if (input == "1")
         {
             level = 1;
             StartGame();
