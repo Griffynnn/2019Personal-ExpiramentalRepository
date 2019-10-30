@@ -7,7 +7,7 @@ public class Hacker : MonoBehaviour {
     //member variables, available everywhere. put them up here at the top, we call this the game state
     int level;
     enum Screen { MainMenu, GuessPassword, WinScreen};
-    Screen currentScreen = Screen.MainMenu;
+    Screen currentScreen;
     
 
 
@@ -18,6 +18,7 @@ public class Hacker : MonoBehaviour {
     }
 	void ShowMainMenu()
     {
+        Screen currentScreen = Screen.MainMenu;
         Terminal.ClearScreen();
         Terminal.WriteLine("Welcome User");
         Terminal.WriteLine("What Would You Like to Hack Into?");
